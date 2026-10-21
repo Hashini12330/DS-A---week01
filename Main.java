@@ -17,6 +17,13 @@ public class Main{
         // 02 - need to create obl=ject caz this is non static
         Main obj = new Main();
         System.out.println(obj.add1(2, 4));
+
+
+        // 03 - assign static to variable
+        int total = add(10, 20);
+        System.out.println(total);
+
+
     }
 
 }
