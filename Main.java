@@ -42,8 +42,22 @@ public class Main{
 
         System.out.println("Set contents: " + a);
         System.out.println("Set size: " + a.size());
-        System.out.println("Set size: " + a.toString());
+
+
+        // CUSTOM BAG (MULTISET) IMPLEMENTATION
+        System.out.println("Testing the Bag");
         
+        SimpleBag b = new SimpleBag();
+        b.add("Apple");
+        b.add("Banana");
+        b.add("Apple");
+        
+        System.out.println("Bag contents: " + b);
+        System.out.println("How many Apples? : " + b.getCount("Apple"));    // Apple need to same name as Key name
+        System.out.println("How many Bananas? : " + b.getCount("Banana"));
+        System.out.println("Set size: " + b.size());
+
+
     }
 
 
@@ -83,6 +97,51 @@ public class Main{
             return items.keySet().toString();
         }
     }
+
+    
+    // ------------------------------
+    // 2. CUSTOM BAG (MULTISET) IMPLEMENTATION
+    // ------------------------------
+
+    static class SimpleBag{
+        // key   = item
+        // value = number of times the item appears
+        private final Map<String, Integer> items = new HashMap<>();
+
+        // Stores the total number of items,
+        // including duplicates
+        private int totalSize = 0;
+
+        // Adds an item.
+        // If it already exists, increase its count.
+        public void add(String item){
+            int currentCount = items.getOrDefault(item, 0);
+
+            items.put(item, currentCount + 1);
+
+            totalSize++;
+
+        }
+        // Returns how many times a specific item exists
+        public int getCount(String item){
+            return items.getOrDefault(item, 0);
+        }
+
+        // Returns total number of items,
+        // including duplicates.
+        public int size(){
+            return totalSize;
+        }
+
+        @Override 
+        public String toString(){
+            return items.toString();
+        }
+    }
+
+
+
+
 
 }
 
